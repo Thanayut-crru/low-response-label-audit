@@ -1,0 +1,11 @@
+{
+  "completed_utc": "2026-10-12T14:02:13.961111+00:00",
+  "rule_accuracies": [
+    0.5,
+    0.7,
+    0.9,
+    1.0
+  ],
+  "replications": 100,
+  "delta": 0.35
+}

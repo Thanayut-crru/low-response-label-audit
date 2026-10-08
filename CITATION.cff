@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the article below."
+title: "When Low Response Does Not Mean No Effect: code and aggregate results"
+type: software
+license: MIT
+repository-code: "https://github.com/Thanayut-crru/low-response-label-audit"
+authors:
+  - family-names: "Takham"
+    given-names: "Kittikorn"
+    affiliation: "Faculty of Science and Technology, Chiang Rai Rajabhat University"
+  - family-names: "Changruenngam"
+    given-names: "Thanayut"
+    affiliation: "Faculty of Science and Technology, Chiang Rai Rajabhat University"
+  - family-names: "Prommai"
+    given-names: "Tanaphong"
+    affiliation: "School of Science, University of Phayao"
+  - family-names: "Binprathan"
+    given-names: "Aree"
+    affiliation: "Faculty of Social Sciences, Chiang Rai Rajabhat University"
+  - family-names: "Suantai"
+    given-names: "Suthep"
+    affiliation: "Faculty of Science, Chiang Mai University"
+preferred-citation:
+  type: article
+  title: "When Low Response Does Not Mean No Effect: A Methodological Audit of Response-Derived Weak Supervision for Financial News"
+  authors:
+    - family-names: "Takham"
+      given-names: "Kittikorn"
+    - family-names: "Changruenngam"
+      given-names: "Thanayut"
+    - family-names: "Prommai"
+      given-names: "Tanaphong"
+    - family-names: "Binprathan"
+      given-names: "Aree"
+    - family-names: "Suantai"
+      given-names: "Suthep"
+  status: submitted

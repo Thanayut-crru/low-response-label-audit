@@ -1,0 +1,90 @@
+{
+  "started_utc": "2026-10-12T14:02:20.721855+00:00",
+  "identity": {
+    "config.json": "a15b1b436e3002f61f58bdcd77c24e26ecbffaf9d73bc4a7baa2258f19bef120",
+    "scripts\\00_snapshot.py": "1e08a636e6fe9d2bf289451ec47b85ad79e5855947b0e4434bbabd4cade28c08",
+    "scripts\\00b_snapshot_supplement.py": "dfe657b2be1168e3cb6ccfd50d74c63a7297a843df818b191519b8f61b73f265",
+    "scripts\\01_simulation.py": "812792ae4c8b509389211bdf8c3530dd5b0ea24ad0550fe97bdffbb7f62ed5bb",
+    "scripts\\02_purged_pilot.py": "c275d0ad21e225304c2697e93885c90784f2456e22c4defa3a2a652e82068814",
+    "scripts\\03_inference_and_report.py": "d29499f50b9990d884adbaace9794f34afdd37d12968049a69e192955ac8fdbc",
+    "scripts\\07_power_analysis.py": "eb93aac723c95599c49caa922889808e4503662dc97e4a29a631403a54cb8fea",
+    "scripts\\08_manuscript_figures.py": "bf144a1f8620201fe7f41499f3fb37c1185223512fcd87d40ba2c7a739964c49",
+    "scripts\\12_equivalence_power.py": "1520ef9a2cae8ddaf1e1b3fb3cddf2dc9f23c0a70bae2e94fdc61d24ab720155",
+    "scripts\\13_factorial_ablation.py": "732f1b6726fba77f643d5e17ef64cea5cdedc93cd747693cb8ba93c44f67d13e",
+    "scripts\\14_provenance_checks.py": "215fe260eca65db5c70ebaf725cfd5359e4c5ab7ec20c8f3b3d6be56cc07ade6",
+    "scripts\\15_near_duplicate_sensitivity.py": "b6b44e257a434514e859166a8a8af7198dedb1e98f0c8e72d7330209c20e2ad0",
+    "scripts\\16_rdfl_component_ablation.py": "970423874c994a7c8ae2ee1287ffbcc33d205dccd62e179ca85b5e83049bba22",
+    "scripts\\17_staleness.py": "2da6bc5567510a373ae033c5b8179c0020cca203efc1a0f81dc1443bee4c83c0",
+    "scripts\\18_simulation_extensions.py": "5b7709da096bb7ba8089d241bd654276d7d491d3010aa52685847576618f3d7c",
+    "scripts\\19_freeze_protocol.py": "74ba93b5f789e10d0888d68700888017d601b90397e98f8867e83544d215d6b1",
+    "scripts\\20_fnspid_prepare.py": "b85e5153f6e611d1b9c254ce13b3eba9fa593d144c6794a84a1eaff2d3b51504",
+    "scripts\\21_fnspid_replication.py": "ce9f45a06df9a19a555cb520e4d706872f7171235d64097f975db535ce0b3897",
+    "scripts\\22_prediction_dispersion.py": "cce41252c36bed45e3cd94771d44bdb29de24f00b4630f2297520fea62264bca",
+    "scripts\\23_observable_bounds.py": "4402a978b9b2d69cd36f7cc18f2fd618784f2cfdc52adb9943bb019ee9b4b497",
+    "scripts\\24_per_block_results.py": "81bfc5f868625ee2e7683fd0768f936e19b1491ffe533ef52698096d356f4008",
+    "scripts\\25_threshold_sensitivity.py": "d32e72caa6c55b61bf9f6727ad196d79f5932adab4d349beaeb5adad8c661cbf",
+    "scripts\\26_loss_decomposition.py": "b2f2d1378e5ac4ab2639b0423419f684734368625416d3e46f00509c6a3ad2cb",
+    "scripts\\27_random_abstention.py": "86bd3b45332d8aecc610068a28c6b2e9bc77d8a3e62a4b774b391a36d83b8729",
+    "scripts\\28_block_stability.py": "6a49fc3f03f215f44aa0a477bca8de8fb71164c76ad2224ff5edee50c57bd4ee",
+    "scripts\\29_signal_contrasts.py": "5b55412422f7304a9da0f3c5a93d376ea2d0a68c2e38d89a45235233955251cf",
+    "scripts\\30_historical_mean.py": "d32d94447791881ee547b0692054eedb7ed17d1c92b9697ce2978ad222f574a6",
+    "scripts\\31_data_flow.py": "77edddd5cddf2404f25d84df88440fed816e1a53f07d8a41d58d5d9a80e1a6f9",
+    "scripts\\common.py": "75143453d6ca2888f0a3f12da8be532fe9f0b8049ed2617b042a61d3ad741b58",
+    "provenance\\source_code\\00_finetune_phayathai.py": "d896154535a933165a8b6e3e82d497a2ded4cc9914c018c3937268b55538c4a9",
+    "provenance\\source_code\\01_build_pilot_labels.py": "9ea75afe9c27133f601dfaf97a9dd6b5537916ed3a98d71af9883ccc96f118ac",
+    "provenance\\source_code\\04_run_tfidf_label_methods.py": "d5a86a143e705d5f736c0b8ff5907d3a5b5630ae67fcbfe86b568d1720c69904",
+    "provenance\\source_code\\06_run_known_truth_simulation.py": "7ae949f20769ebcdb76f1ed4f5fd68a891395fe248274f713c649313ddbcf412"
+  },
+  "config": {
+    "source_root": "D:/ผอ/IEEE",
+    "study_status": "RETROSPECTIVE_METHODS_STUDY_NOT_PREREGISTERED",
+    "simulation": {
+      "replications": 100,
+      "seed_start": 21001,
+      "n_train": 2400,
+      "n_test": 1200,
+      "features": 20,
+      "fixed_thresholds": [
+        0.2,
+        0.35,
+        0.5
+      ],
+      "primary_threshold": 0.35
+    },
+    "inference": {
+      "bootstrap_iterations": 10000,
+      "seed": 39001,
+      "block_lengths": [
+        10,
+        20,
+        40
+      ],
+      "primary_block_length": 20,
+      "relative_equivalence_margin": 0.02
+    },
+    "real_data": {
+      "purge_observed_sessions": 5,
+      "seeds": [
+        11,
+        23,
+        42,
+        71,
+        101
+      ],
+      "status": "EXPLORATORY_UNVERIFIED_TIMING_CALENDAR_ADJUSTMENTS"
+    },
+    "prohibited_evidence": [
+      "results/metrics/",
+      "Legacy-FT-Random",
+      "in-sample Legacy-FT performance",
+      "val_r as evidence of sentiment or forecasting quality"
+    ]
+  },
+  "python": "3.12.10",
+  "versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.0"
+  }
+}

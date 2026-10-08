@@ -1,0 +1,9 @@
+{
+  "completed_utc": "2026-10-12T14:00:33.467633+00:00",
+  "sources": [
+    "thai_fresh_pilot",
+    "us_uncalibrated",
+    "us_calibrated"
+  ],
+  "status": "DESCRIPTIVE"
+}

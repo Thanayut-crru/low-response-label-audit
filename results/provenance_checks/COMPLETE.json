@@ -1,0 +1,10 @@
+{
+  "completed_utc": "2026-10-12T13:43:30.161878+00:00",
+  "status": "DIAGNOSTIC_ONLY",
+  "decision_hour_ict": 9.0,
+  "similarity_thresholds": [
+    0.8,
+    0.9,
+    0.95
+  ]
+}
