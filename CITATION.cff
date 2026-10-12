@@ -4,6 +4,7 @@ title: "When Low Response Does Not Mean No Effect: code and aggregate results"
 type: software
 license: MIT
 repository-code: "https://github.com/Thanayut-crru/low-response-label-audit"
+doi: "10.5281/zenodo.23320778"
 authors:
   - family-names: "Takham"
     given-names: "Kittikorn"

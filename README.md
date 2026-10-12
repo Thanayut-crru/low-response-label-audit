@@ -191,5 +191,6 @@ non-commercial terms.
 
 ## Citation
 
-See `CITATION.cff`. Releases are archived on Zenodo through its GitHub integration. Full reference
-details of the article will be added after publication.
+See `CITATION.cff`. Every release is archived on Zenodo: https://doi.org/10.5281/zenodo.23320778
+(this DOI always resolves to the latest version). Full reference details of the article will be
+added after publication.
