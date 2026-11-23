@@ -1,0 +1,22 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "torch": "2.11.0+cu128",
+  "transformers": "4.46.3",
+  "jobs": {
+    "thai": {
+      "model": "airesearch/wangchanberta-base-att-spm-uncased",
+      "articles": 9616,
+      "dimension": 768,
+      "max_length": 256,
+      "seconds": 18.4
+    },
+    "us": {
+      "model": "ProsusAI/finbert",
+      "articles": 8080,
+      "dimension": 768,
+      "max_length": 256,
+      "seconds": 4.4
+    }
+  }
+}

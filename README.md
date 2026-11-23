@@ -70,7 +70,8 @@ aggregate tables released here.
 | `research/` | `PROTOCOL.md` (retrospective protocol), `IDENTIFIABILITY.md` (the constructive argument), `PREREGISTRATION_r6.md` (external replication protocol), `PREREGISTRATION_FREEZE.json` (derived freeze record), `PREREGISTRATION_DEVIATIONS.md` (deviation log), `FNSPID_INSPECTION.json` (counts and dates inspected before the freeze). |
 | `provenance/` | The legacy code the pipeline reuses and aggregate outputs of the earlier project phases. |
 | `results/` | One folder per run: aggregate tables, `REPORT.md`, `run_manifest.json` (code hashes, configuration, package versions), and `COMPLETE.json`. `results/figures/` holds the pipeline's figures. |
-| `figures/` | The article's Figures 1–6 and Supplementary Figures S1–S2 as submitted, with the draw.io sources of Figures 1 and 2. |
+| `figures/` | The article's Figures 1–6 and Supplementary Figures S1–S2 as submitted, with the draw.io sources of Figures 1 and 2. `figures/revision/` holds the revised Figure 1 and the figures added in the first journal revision. |
+| `data_reconstruction/` | Routes to checking the Thai analysis without the restricted data: a data dictionary, synthetic inputs with an end-to-end run, a text-free article manifest, and date-level losses with a recomputation script (see its `README.md`). |
 | `archive.zip` | Byte-identical originals, as described above; `tools/verify_release.py` reads them from the zip. |
 | `SHA256SUMS` | SHA-256 of every released code, protocol, result, and figure file, and of `archive.zip`. |
 
@@ -116,6 +117,28 @@ Tables and figures numbered with an S are in the supplementary materials. The pi
 the article's Figure 3, `fig2` Figure S1, `fig3` Figure 4, `fig4` Figure 5, and `fig5` Figure S2;
 Figure 6 is drawn by script 28. `figures/` holds the files as submitted.
 
+### First journal revision
+
+The table above uses the numbering of the submitted article. The revised article renumbers some
+tables and figures; the results added in the first journal revision are, in its numbering:
+
+| Revised article | Result files | Script |
+| --- | --- | --- |
+| Figure 1 (revised) | `figures/revision/Figure1_study_design.drawio` (drawn in draw.io) | — |
+| Figure 5, Table S19 | `figures/revision/fig_r1_simulation.*`, `results/revision_tables/S19_simulation.md` | 38, 39 |
+| Figure 7 | `figures/revision/fig_r1_ablation.*` | 38 |
+| Figure 9 | `figures/revision/fig_r1_robustness.*` | 38 |
+| Table 6 | `results/market_vs_text/`, `results/revision_tables/table6_market_vs_text.md` | 32, 39 |
+| Table S20 | `results/revision_tables/S20_source_timing.md` (from `results/provenance_checks/`) | 39 |
+| Table S21 | `results/availability_shift/` | 33 |
+| Table S22 | `results/encoder_sensitivity/`, `results/encoder_tuned/` | 34, 35, 35b |
+| Table S23 | `results/market_regimes/` | 37 |
+| Tables S24, S25 | `results/simulation_robustness/` | 36 |
+| Date-level losses, synthetic run, article manifest | `data_reconstruction/` | its own scripts |
+
+`results/figures_revision/` holds the figures as script 38 wrote them; `figures/revision/` holds the
+same files under the article's numbering together with the revised Figure 1.
+
 ## Reproducing the results
 
 Each script refuses to overwrite a completed result folder. To rerun one, move the shipped folder
@@ -129,6 +152,11 @@ and compare the new output with it.
 | `20_fnspid_prepare.py`, `21_fnspid_replication.py` | FNSPID, downloaded as described below | Yes, after the download |
 | `00_snapshot.py`, `00b_snapshot_supplement.py`, `02`, `03`, `07`, `13`–`17`, `30`, `31` | the Thai news and price snapshots | No: the data are not redistributed |
 | `22_prediction_dispersion.py`, `24`–`26`, `28_block_stability.py`, `29_signal_contrasts.py` | row-level outputs of the Thai pilot and of 21 | Only with the Thai data |
+| `36_simulation_robustness.py` | nothing (synthetic data) | Yes |
+| `38_revision_figures.py`, `39_revision_tables.py` | the shipped aggregate tables | Yes |
+| `32_market_vs_text.py`, `33_availability_shift.py`, `35_encoder_sensitivity.py`, `35b_encoder_tuned.py`, `37_market_regimes.py` | the Thai snapshots, FNSPID, and (for 35 and 35b) the embeddings of 34 | Only with the Thai data |
+| `34_extract_embeddings.py` | the article text, PyTorch, and `transformers` (a GPU is advisable) | Only with the Thai data |
+| `data_reconstruction/run_synthetic_pipeline.py`, `data_reconstruction/recompute_from_date_losses.py` | nothing beyond this repository | Yes |
 
 `19_freeze_protocol.py` was run once, before any FNSPID outcome was computed, and refuses to run
 again. Scripts 20 and 21 refuse to run if any locked file has changed. `config.json` is one of those
@@ -140,6 +168,10 @@ it lies outside the locked protocol (deviation 4). `26_loss_decomposition.py` an
 after all results were known and outside the protocol (deviation 6). Scripts 28–31
 (stability over time, signal contrasts and calibration coefficients, historical-mean baselines, and
 the Thai data flow) were added on the same terms after a second pre-submission review (deviation 7).
+Scripts 32–39 and `data_reconstruction/` were added in the first journal revision, at the reviewers'
+request and again after all locked results were known (deviation 8). Scripts 32, 33 and 36 first
+reproduce a locked artifact (the locked predictions, labels, or simulation diagnostic) before
+reporting anything new.
 
 ## External replication data (FNSPID)
 
@@ -164,10 +196,14 @@ repository, not on a third-party registry. Deviations from the protocol are list
 - **Thai news text and price panels.** They remain under their sources' terms. The SHA-256 of every
   snapshot used is listed in `archive/provenance/manifest.json` and
   `archive/provenance/supplement/manifest.json` inside `archive.zip`, so anyone who obtains the same files can confirm
-  they are identical.
+  they are identical. `data_reconstruction/thai_article_manifest.csv` identifies every article (source, URL,
+  recorded time, stock, decision date, and a SHA-256 of its normalized text) without its text.
 - **Row-level derived files.** Stock-day predictions, weak-label tables, and article-level staleness
   scores are withheld because they are derived row by row from the data above or from FNSPID.
 - **FNSPID and every row-level file derived from it.** Scripts 20 and 21 regenerate them locally.
+- **Row-level outputs of the revision analyses.** The predictions of scripts 32–37, the labels that
+  script 33 rebuilds for each availability mapping, and the article embeddings of script 34 contain
+  realized returns or are computed from article text, so they are withheld like the files above.
 - **Simulation checkpoints.** Script 01 regenerates them.
 - **Two files of an earlier project** that play no part in the article: a model fine-tuning script,
   which run identities hash but no run executes, and that project's data-audit report (the audit

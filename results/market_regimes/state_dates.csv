@@ -1,0 +1,9 @@
+market,state,dates
+thai,high_volatility,201
+thai,low_volatility,202
+thai,rising_market,197
+thai,falling_market,206
+us,high_volatility,213
+us,low_volatility,213
+us,rising_market,270
+us,falling_market,156

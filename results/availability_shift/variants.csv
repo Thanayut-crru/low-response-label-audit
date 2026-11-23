@@ -1,0 +1,4 @@
+market,variant,articles,articles_mapped_locked,articles_mapped_variant,retained_labels_locked,retained_labels_variant,evaluated_stock_days,evaluated_dates,articles_dropped,dropped_date_only
+thai,shift1,9616,9594,9553,1722,1685,2185,403,,
+thai,drop_ambiguous,9616,9594,9254,1722,1690,2168,403,340.0,167.0
+us,shift1,8080,8080,8075,1656,1661,1874,426,,

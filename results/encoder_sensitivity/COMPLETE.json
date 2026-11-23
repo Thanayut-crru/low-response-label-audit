@@ -1,0 +1,8 @@
+{
+  "completed_utc": "2026-11-19T07:09:26.126172+00:00",
+  "status": "POST_LOCK_REVIEWER_REQUESTED",
+  "stock_days": {
+    "thai": 2197,
+    "us": 1874
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "completed_utc": "2026-11-19T07:26:25.438358+00:00",
+  "status": "POST_LOCK_REVIEWER_REQUESTED",
+  "alphas": [
+    0.0001,
+    0.001,
+    0.01,
+    0.1
+  ],
+  "inner_gap_sessions": 5
+}

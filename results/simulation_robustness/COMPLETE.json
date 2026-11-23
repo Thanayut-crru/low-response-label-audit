@@ -1,0 +1,24 @@
+{
+  "completed_utc": "2026-11-19T07:06:24.908743+00:00",
+  "status": "POST_LOCK_REVIEWER_REQUESTED",
+  "settings": [
+    "baseline",
+    "noise_t5",
+    "noise_t3",
+    "noise_hetero",
+    "cancel_0",
+    "cancel_0.25",
+    "cancel_0.5",
+    "cancel_0.75",
+    "cancel_1",
+    "n_600",
+    "n_1200",
+    "n_4800",
+    "n_9600",
+    "volume_sd_0.25",
+    "volume_sd_1.5",
+    "rho_0.5"
+  ],
+  "replications": 100,
+  "delta": 0.35
+}

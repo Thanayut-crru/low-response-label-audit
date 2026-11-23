@@ -56,6 +56,18 @@ EXECUTED = {   # scripts each run executed, besides config.json, scripts/common.
     'historical_mean': ['scripts/30_historical_mean.py', 'scripts/13_factorial_ablation.py',
                         'scripts/12_equivalence_power.py'],
     'data_flow': ['scripts/31_data_flow.py'],
+    # first journal revision (deviation 8): analyses requested by the reviewers
+    'market_vs_text': ['scripts/32_market_vs_text.py', 'scripts/revision_common.py',
+                       'scripts/21_fnspid_replication.py'],
+    'availability_shift': ['scripts/33_availability_shift.py', 'scripts/revision_common.py',
+                           'scripts/21_fnspid_replication.py'],
+    'encoder_sensitivity': ['scripts/35_encoder_sensitivity.py', 'scripts/revision_common.py',
+                            'scripts/21_fnspid_replication.py'],
+    'encoder_tuned': ['scripts/35b_encoder_tuned.py', 'scripts/35_encoder_sensitivity.py',
+                      'scripts/revision_common.py', 'scripts/21_fnspid_replication.py'],
+    'simulation_robustness': ['scripts/36_simulation_robustness.py'],
+    'market_regimes': ['scripts/37_market_regimes.py', 'scripts/revision_common.py',
+                       'scripts/21_fnspid_replication.py'],
 }
 ALWAYS = ('config.json', 'scripts/common.py', 'provenance/source_code/', 'provenance/supplement/source_code/')
 VOLATILE = {'started_utc', 'completed_utc', 'generated_at_utc', 'identity', 'versions', 'python'}
