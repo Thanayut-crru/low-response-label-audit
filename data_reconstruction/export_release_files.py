@@ -37,7 +37,11 @@ SOURCES = {   # name: (file, key column, prediction column, loss column or None)
     'revision_availability_shift': (R / 'availability_shift/predictions.csv', ['market', 'variant', 'method'],
                                     'prediction', 'loss'),
     'revision_encoder_locked': (R / 'encoder_sensitivity/predictions.csv', ['market', 'method'], 'prediction', 'loss'),
-    'revision_encoder_validated': (R / 'encoder_tuned/predictions.csv', ['market', 'method'], 'prediction', 'loss'),
+    # validated penalty: the audit-corrected run (35c); the original 35b run is kept for traceability (deviation 9)
+    'revision_encoder_validated': (R / 'encoder_tuned_corrected/predictions.csv', ['market', 'method'], 'prediction',
+                                   'loss'),
+    'revision_encoder_validated_original': (R / 'encoder_tuned/predictions.csv', ['market', 'method'], 'prediction',
+                                            'loss'),
 }
 
 

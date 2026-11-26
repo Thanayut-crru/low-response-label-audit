@@ -131,7 +131,7 @@ tables and figures; the results added in the first journal revision are, in its 
 | Table 6 | `results/market_vs_text/`, `results/revision_tables/table6_market_vs_text.md` | 32, 39 |
 | Table S20 | `results/revision_tables/S20_source_timing.md` (from `results/provenance_checks/`) | 39 |
 | Table S21 | `results/availability_shift/` | 33 |
-| Table S22 | `results/encoder_sensitivity/`, `results/encoder_tuned/` | 34, 35, 35b |
+| Table S22 | `results/encoder_sensitivity/`, `results/encoder_tuned_corrected/` (validated penalty; `results/encoder_tuned/` is the original run, kept for traceability) | 34, 35, 35b, 35c |
 | Table S23 | `results/market_regimes/` | 37 |
 | Tables S24, S25 | `results/simulation_robustness/` | 36 |
 | Date-level losses, synthetic run, article manifest | `data_reconstruction/` | its own scripts |
@@ -154,7 +154,7 @@ and compare the new output with it.
 | `22_prediction_dispersion.py`, `24`–`26`, `28_block_stability.py`, `29_signal_contrasts.py` | row-level outputs of the Thai pilot and of 21 | Only with the Thai data |
 | `36_simulation_robustness.py` | nothing (synthetic data) | Yes |
 | `38_revision_figures.py`, `39_revision_tables.py` | the shipped aggregate tables | Yes |
-| `32_market_vs_text.py`, `33_availability_shift.py`, `35_encoder_sensitivity.py`, `35b_encoder_tuned.py`, `37_market_regimes.py` | the Thai snapshots, FNSPID, and (for 35 and 35b) the embeddings of 34 | Only with the Thai data |
+| `32_market_vs_text.py`, `33_availability_shift.py`, `35_encoder_sensitivity.py`, `35b_encoder_tuned.py`, `35c_encoder_tuned_corrected.py`, `37_market_regimes.py` | the Thai snapshots, FNSPID, and (for 35, 35b and 35c) the embeddings of 34 | Only with the Thai data |
 | `34_extract_embeddings.py` | the article text, PyTorch, and `transformers` (a GPU is advisable) | Only with the Thai data |
 | `data_reconstruction/run_synthetic_pipeline.py`, `data_reconstruction/recompute_from_date_losses.py` | nothing beyond this repository | Yes |
 
@@ -171,7 +171,10 @@ the Thai data flow) were added on the same terms after a second pre-submission r
 Scripts 32–39 and `data_reconstruction/` were added in the first journal revision, at the reviewers'
 request and again after all locked results were known (deviation 8). Scripts 32, 33 and 36 first
 reproduce a locked artifact (the locked predictions, labels, or simulation diagnostic) before
-reporting anything new.
+reporting anything new. `35c_encoder_tuned_corrected.py` is an audit correction of 35b (deviation 9):
+it scales the validation loss of the penalty choice over the inner training segment only and averages
+it within dates first, as in the evaluation. Its results replace those of 35b in Table S22 and
+Figure 9; 35b and `results/encoder_tuned/` are kept for traceability.
 
 ## External replication data (FNSPID)
 

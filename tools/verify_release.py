@@ -68,6 +68,10 @@ EXECUTED = {   # scripts each run executed, besides config.json, scripts/common.
     'simulation_robustness': ['scripts/36_simulation_robustness.py'],
     'market_regimes': ['scripts/37_market_regimes.py', 'scripts/revision_common.py',
                        'scripts/21_fnspid_replication.py'],
+    # audit correction of encoder_tuned (deviation 9); encoder_tuned is kept for traceability
+    'encoder_tuned_corrected': ['scripts/35c_encoder_tuned_corrected.py', 'scripts/35b_encoder_tuned.py',
+                                'scripts/35_encoder_sensitivity.py', 'scripts/revision_common.py',
+                                'scripts/21_fnspid_replication.py'],
 }
 ALWAYS = ('config.json', 'scripts/common.py', 'provenance/source_code/', 'provenance/supplement/source_code/')
 VOLATILE = {'started_utc', 'completed_utc', 'generated_at_utc', 'identity', 'versions', 'python'}

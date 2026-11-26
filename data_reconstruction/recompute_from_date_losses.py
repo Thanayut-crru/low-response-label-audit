@@ -2,7 +2,8 @@
 
 usage: python recompute_from_date_losses.py <preset> [--block 20]
 presets: table4_fresh, table4_archived, table5_uncalibrated, table5_calibrated, table6_market_vs_text,
-         s21_availability, s22_encoder_locked, s22_encoder_validated
+         s21_availability, s22_encoder_locked, s22_encoder_validated, s22_encoder_validated_vs_zero,
+         s22_encoder_validated_original (the 35b run that the audit correction replaced, kept for traceability)
 
 Every estimate is exact. The revision analyses (Table 6, S21, S22) use the seeds of their scripts and reproduce
 the published intervals and p-values exactly; the locked analyses drew their bootstrap seeds in a different order,
@@ -50,11 +51,18 @@ def run(preset, block):
         for k, (market, variant) in enumerate([('thai', 'shift1'), ('thai', 'drop_ambiguous'), ('us', 'shift1')]):
             out += rc.contrast_family(wide('revision_availability_shift.csv', market=market, variant=variant), LOCKED,
                                       93000 + 1000 * k, f'{market}_{variant}', [block])
-    elif preset in ('s22_encoder_locked', 's22_encoder_validated'):
-        file = 'revision_encoder_locked.csv' if preset.endswith('locked') else 'revision_encoder_validated.csv'
-        offsets = {'s22_encoder_locked': (96000, 97000), 's22_encoder_validated': (99000, 99500)}[preset]
+    elif preset in ('s22_encoder_locked', 's22_encoder_validated', 's22_encoder_validated_original'):
+        file = {'s22_encoder_locked': 'revision_encoder_locked.csv',
+                's22_encoder_validated': 'revision_encoder_validated.csv',
+                's22_encoder_validated_original': 'revision_encoder_validated_original.csv'}[preset]
+        offsets = (96000, 97000) if preset == 's22_encoder_locked' else (99000, 99500)
         for offset, market in zip(offsets, ['thai', 'us']):
             out += rc.contrast_family(wide(file, market=market), LOCKED, offset, market, [block])
+    elif preset == 's22_encoder_validated_vs_zero':
+        vs_zero = [('ZERO', k) for k in ['DIRECT_HUBER', 'ORDINARY_SOFT', 'HARD_RDFL', 'RDFL_SOFT']]
+        for offset, market in [(99250, 'thai'), (99750, 'us')]:
+            out += rc.contrast_family(wide('revision_encoder_validated.csv', market=market), vs_zero, offset, market,
+                                      [block])
     else:
         raise SystemExit(f'unknown preset {preset}')
     return pd.DataFrame(out)

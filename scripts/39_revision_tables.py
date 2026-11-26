@@ -104,7 +104,7 @@ def availability():
 def encoder():
     fixed = pd.read_csv(R / 'encoder_sensitivity/paired_inference.csv')
     fixed = fixed[fixed.block_length == PRIMARY]
-    tuned = pd.read_csv(R / 'encoder_tuned/paired_inference.csv')
+    tuned = pd.read_csv(R / 'encoder_tuned_corrected/paired_inference.csv')   # audit-corrected run (35c)
     tuned = tuned[tuned.block_length == PRIMARY]
     rows = family_rows(fixed, lambda r: [MARKET[r.market], 'Locked settings', 'RDFL_SOFT'])
     t1 = tuned[tuned.family == 'rdfl_vs_comparators']
@@ -163,7 +163,7 @@ def main():
              'S23_regimes': regimes(), 'S24_sim_robustness': sim_robust(), 'S25_oracle': oracle()}
     for name, text in parts.items():
         (OUT / f'{name}.md').write_text(text + '\n', encoding='utf-8')
-    alphas = pd.read_csv(R / 'encoder_tuned/chosen_alphas.csv')
+    alphas = pd.read_csv(R / 'encoder_tuned_corrected/chosen_alphas.csv')
     (OUT / 'encoder_alphas.json').write_text(alphas.to_json(orient='records', indent=1), encoding='utf-8')
     print('\n\n'.join(f'## {k}\n{v}' for k, v in parts.items()))
 

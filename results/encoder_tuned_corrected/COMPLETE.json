@@ -1,0 +1,13 @@
+{
+  "completed_utc": "2026-11-26T06:20:13.310060+00:00",
+  "status": "POST_LOCK_AUDIT_CORRECTION",
+  "alphas": [
+    0.0001,
+    0.001,
+    0.01,
+    0.1
+  ],
+  "inner_gap_sessions": 5,
+  "change": "inner-window scale and equal-date validation loss",
+  "replaces": "encoder_tuned"
+}

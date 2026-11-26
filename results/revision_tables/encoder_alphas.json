@@ -23,7 +23,7 @@
   "DIRECT_HUBER":0.1,
   "RDFL_SOFT":0.1,
   "HARD_RDFL":0.1,
-  "ORDINARY_SOFT":0.01,
+  "ORDINARY_SOFT":0.1,
   "fallback_locked_alpha":false
  },
  {

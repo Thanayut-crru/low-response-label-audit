@@ -146,7 +146,8 @@ def robustness_values():
     a = pd.read_csv(R / 'availability_shift/paired_inference.csv')
     for r in a[(a.block_length == PRIMARY) & (a.baseline == 'ZERO')].itertuples():
         v[(r.market, r.variant)] = (r.relative_improvement, r.family_ci_low, r.family_ci_high)
-    for name, folder in [('encoder_fixed', 'encoder_sensitivity'), ('encoder_tuned', 'encoder_tuned')]:
+    # validated penalty: the audit-corrected run (35c); 35b's encoder_tuned is kept for traceability only
+    for name, folder in [('encoder_fixed', 'encoder_sensitivity'), ('encoder_tuned', 'encoder_tuned_corrected')]:
         e = pd.read_csv(R / f'{folder}/paired_inference.csv')
         if 'family' in e:
             e = e[e.family == 'rdfl_vs_comparators']
